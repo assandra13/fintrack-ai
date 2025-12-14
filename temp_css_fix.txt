@@ -1,0 +1,18 @@
+/* Custom Form Validation */
+input:invalid,
+select:invalid,
+textarea:invalid {
+  border-color: var(--error-solid) !important;
+}
+
+input:focus:invalid,
+select:focus:invalid,
+textarea:focus:invalid {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Hide default validation tooltip */
+input::-webkit-validation-bubble-message,
+select::-webkit-validation-bubble-message {
+  display: none;
+}

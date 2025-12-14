@@ -1,0 +1,32 @@
+/* Mobile Navigation Fixes */
+@media (max-width: 768px) {
+
+    /* Adjust main layout for mobile */
+    .app-layout {
+        margin-left: 0 !important;
+        padding-bottom: 80px;
+        /* Space for bottom nav */
+    }
+
+    /* Make header mobile-friendly with space for hamburger */
+    .app-header {
+        padding-left: 70px !important;
+        /* Increased space for hamburger button */
+    }
+
+    /* Adjust main content padding */
+    main {
+        padding: var(--space-4) !important;
+    }
+
+    /* Hide greeting on very small screens */
+    @media (max-width: 480px) {
+        .app-header h3 {
+            font-size: 1rem !important;
+        }
+
+        .app-header p {
+            display: none;
+        }
+    }
+}
