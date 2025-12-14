@@ -150,14 +150,16 @@ const Budgets = () => {
           <h1 style={{ marginBottom: "var(--space-2)" }}>Budget</h1>
           <p style={{ color: "var(--text-secondary)", margin: 0 }}>Atur dan pantau budget pengeluaran Anda</p>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "var(--space-4)", flexWrap: "wrap" }}>
           <Button onClick={() => setShowModal(true)}>
             <Plus size={18} />
             Tambah Budget
           </Button>
-          <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
-            <label style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--text-primary)" }}>📅 Bulan:</label>
-            <ModernDatePicker value={selectedMonth + "-01"} onChange={(e) => setSelectedMonth(e.target.value.slice(0, 7))} placeholder="Pilih bulan" />
+          <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", minWidth: "250px" }}>
+            <label style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--text-primary)", whiteSpace: "nowrap" }}>📅 Bulan:</label>
+            <div style={{ flex: 1, minWidth: "150px" }}>
+              <ModernDatePicker value={selectedMonth + "-01"} onChange={(e) => setSelectedMonth(e.target.value.slice(0, 7))} placeholder="Pilih bulan" />
+            </div>
           </div>
         </div>
       </div>
