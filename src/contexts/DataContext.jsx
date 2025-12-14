@@ -25,7 +25,7 @@ const getStorageKeys = (userId) => {
       BILLS: "fintrack-bills",
     };
   }
-
+  
   return {
     TRANSACTIONS: `fintrack-${userId}-transactions`,
     WALLETS: `fintrack-${userId}-wallets`,
@@ -125,7 +125,7 @@ export const DataProvider = ({ children }) => {
         localStorage.setItem(STORAGE_KEYS.BUDGETS, JSON.stringify([]));
         localStorage.setItem(STORAGE_KEYS.GOALS, JSON.stringify([]));
         localStorage.setItem(STORAGE_KEYS.BILLS, JSON.stringify([]));
-
+        
         await syncToCloud(user.id, "wallets", [defaultWallet]);
         await syncToCloud(user.id, "categories", defaultCategories);
       }
@@ -169,7 +169,7 @@ export const DataProvider = ({ children }) => {
   const addTransaction = (transaction) => {
     if (!user?.id) return null;
     const STORAGE_KEYS = getStorageKeys(user.id);
-
+    
     const newTransaction = {
       ...transaction,
       id: `txn-${user.id}-${Date.now()}`,
@@ -241,11 +241,11 @@ export const DataProvider = ({ children }) => {
     const updated = transactions.map((t) =>
       t.id === id
         ? {
-          ...t,
-          ...updates,
-          date: updates.date ? new Date(updates.date).toISOString() : t.date || t.createdAt,
-          updatedAt: new Date().toISOString(),
-        }
+            ...t,
+            ...updates,
+            date: updates.date ? new Date(updates.date).toISOString() : t.date || t.createdAt,
+            updatedAt: new Date().toISOString(),
+          }
         : t
     );
     setTransactions(updated);
@@ -482,50 +482,10 @@ export const DataProvider = ({ children }) => {
     syncToCloud(user.id, "bills", updated);
   };
 
-  const markBillAsPaid = (id, walletId) => {
+  const markBillAsPaid = (id) => {
     if (!user?.id) return;
     const STORAGE_KEYS = getStorageKeys(user.id);
-
-    // Find the bill
-    const bill = bills.find((b) => b.id === id);
-    if (!bill) return;
-
-    // Create expense transaction
-    if (walletId) {
-      const newTransaction = {
-        type: "expense",
-        amount: bill.amount,
-        categoryId: bill.categoryId,
-        walletId: walletId,
-        date: new Date().toISOString(),
-        description: `Pembayaran ${bill.name}`,
-        createdAt: new Date().toISOString(),
-        id: `txn-${user.id}-${Date.now()}`,
-      };
-
-      // Update wallet balance
-      const updatedWallets = wallets.map((w) => {
-        if (w.id === walletId) {
-          return {
-            ...w,
-            balance: w.balance - bill.amount,
-          };
-        }
-        return w;
-      });
-      setWallets(updatedWallets);
-      localStorage.setItem(STORAGE_KEYS.WALLETS, JSON.stringify(updatedWallets));
-      syncToCloud(user.id, "wallets", updatedWallets);
-
-      // Add transaction
-      const updatedTransactions = [...transactions, newTransaction];
-      setTransactions(updatedTransactions);
-      localStorage.setItem(STORAGE_KEYS.TRANSACTIONS, JSON.stringify(updatedTransactions));
-      syncToCloud(user.id, "transactions", updatedTransactions);
-    }
-
-    // Mark bill as paid
-    const updated = bills.map((b) => (b.id === id ? { ...b, isPaid: true, paidAt: new Date().toISOString(), paidWithWalletId: walletId } : b));
+    const updated = bills.map((b) => (b.id === id ? { ...b, isPaid: true, paidAt: new Date().toISOString() } : b));
     setBills(updated);
     localStorage.setItem(STORAGE_KEYS.BILLS, JSON.stringify(updated));
     syncToCloud(user.id, "bills", updated);

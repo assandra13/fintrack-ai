@@ -52,7 +52,6 @@ const AppLayout = ({ children }) => {
                 <main style={{
                     flex: 1,
                     padding: 'var(--space-6)',
-                    paddingBottom: 'calc(var(--space-6) + 80px)', // Extra padding for bottom nav on mobile
                     background: 'var(--bg-primary)',
                 }}>
                     {children}

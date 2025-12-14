@@ -12,12 +12,9 @@ import ModernDatePicker from "../components/common/ModernDatePicker";
 import { Plus, Edit2, Trash2, Receipt, CheckCircle2, Clock, AlertCircle } from "lucide-react";
 
 const Bills = () => {
-  const { bills, addBill, updateBill, deleteBill, markBillAsPaid, categories, wallets } = useData();
+  const { bills, addBill, updateBill, deleteBill, markBillAsPaid, categories } = useData();
   const [showModal, setShowModal] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
-  const [billToPay, setBillToPay] = useState(null);
-  const [selectedWallet, setSelectedWallet] = useState("");
   const [billToDelete, setBillToDelete] = useState(null);
   const [editingBill, setEditingBill] = useState(null);
   const [formData, setFormData] = useState({
@@ -113,19 +110,8 @@ const Bills = () => {
     }
   };
 
-  const handleMarkPaid = (bill) => {
-    setBillToPay(bill);
-    setSelectedWallet(wallets[0]?.id || "");
-    setShowPaymentModal(true);
-  };
-
-  const handlePaymentConfirm = () => {
-    if (billToPay && selectedWallet) {
-      markBillAsPaid(billToPay.id, selectedWallet);
-      setShowPaymentModal(false);
-      setBillToPay(null);
-      setSelectedWallet("");
-    }
+  const handleMarkPaid = (id) => {
+    markBillAsPaid(id);
   };
 
   const getStatusBadge = (status) => {
@@ -202,7 +188,7 @@ const Bills = () => {
         </span>
         <div style={{ display: "flex", gap: "var(--space-2)" }}>
           {!bill.isPaid && (
-            <Button size="sm" onClick={() => handleMarkPaid(bill)}>
+            <Button size="sm" onClick={() => handleMarkPaid(bill.id)}>
               <CheckCircle2 size={16} />
               Bayar
             </Button>
@@ -358,61 +344,6 @@ const Bills = () => {
             </label>
           </div>
         </form>
-      </ModernModal>
-
-      {/* Payment Modal */}
-      <ModernModal
-        isOpen={showPaymentModal}
-        onClose={() => {
-          setShowPaymentModal(false);
-          setBillToPay(null);
-          setSelectedWallet("");
-        }}
-        title="Bayar Tagihan"
-        footer={
-          <>
-            <Button variant="secondary" onClick={() => setShowPaymentModal(false)}>
-              Batal
-            </Button>
-            <Button onClick={handlePaymentConfirm} disabled={!selectedWallet}>
-              Konfirmasi Pembayaran
-            </Button>
-          </>
-        }
-      >
-        {billToPay && (
-          <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-            <div>
-              <p style={{ margin: 0, fontSize: "0.875rem", color: "var(--text-secondary)" }}>Tagihan</p>
-              <h3 style={{ margin: "var(--space-2) 0" }}>{billToPay.name}</h3>
-            </div>
-            <div>
-              <p style={{ margin: 0, fontSize: "0.875rem", color: "var(--text-secondary)" }}>Jumlah</p>
-              <h2 style={{ margin: "var(--space-2) 0", color: "var(--error-text)" }}>{formatCurrency(billToPay.amount)}</h2>
-            </div>
-            <ModernSelect
-              label="Bayar dari Wallet"
-              value={selectedWallet}
-              onChange={(e) => setSelectedWallet(e.target.value)}
-              options={wallets.map((w) => ({
-                value: w.id,
-                label: `${w.name} (${formatCurrency(w.balance)})`,
-              }))}
-              required
-            />
-            <div
-              style={{
-                padding: "var(--space-3)",
-                background: "var(--info-bg)",
-                borderRadius: "var(--radius-md)",
-                fontSize: "0.875rem",
-                color: "var(--info-text)",
-              }}
-            >
-              💡 Pembayaran akan otomatis dicatat sebagai transaksi pengeluaran dan mengurangi saldo wallet yang dipilih.
-            </div>
-          </div>
-        )}
       </ModernModal>
 
       {/* Delete Confirmation Modal */}
