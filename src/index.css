@@ -1377,3 +1377,18 @@ a:hover {
     align-items: center !important;
   }
 }
+/* Fix Header overflow and layout */
+.app-header {
+  overflow: hidden !important;
+  line-height: 1.2 !important;
+}
+
+.app-header h3 {
+  line-height: 1.2 !important;
+  margin-bottom: 2px !important;
+}
+
+.app-header p {
+  line-height: 1.2 !important;
+  margin-top: 2px !important;
+}
