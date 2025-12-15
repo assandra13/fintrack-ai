@@ -37,7 +37,7 @@ const ModernDatePicker = ({
     };
 
     return (
-        <div style={{ marginBottom: 'var(--space-4)' }}>
+        <div style={label ? { marginBottom: 'var(--space-4)' } : {}}>
             {label && (
                 <label style={{
                     display: 'block',

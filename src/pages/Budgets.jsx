@@ -155,8 +155,8 @@ const Budgets = () => {
             <Plus size={18} />
             Tambah Budget
           </Button>
-          <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", minWidth: "250px" }}>
-            <label style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--text-primary)", whiteSpace: "nowrap" }}>📅 Bulan:</label>
+          <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-2)", minWidth: "250px" }}>
+            <label style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--text-primary)", whiteSpace: "nowrap", paddingTop: "var(--space-2)" }}>📅 Bulan:</label>
             <div style={{ flex: 1, minWidth: "150px" }}>
               <ModernDatePicker value={selectedMonth + "-01"} onChange={(e) => setSelectedMonth(e.target.value.slice(0, 7))} placeholder="Pilih bulan" />
             </div>
