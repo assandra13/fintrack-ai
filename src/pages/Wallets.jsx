@@ -208,6 +208,7 @@ const Wallets = () => {
           setEditingWallet(null);
         }}
         title={editingWallet ? "Edit Wallet" : "Tambah Wallet"}
+        size="lg"
         footer={
           <>
             <Button variant="secondary" onClick={() => setShowModal(false)}>
@@ -299,6 +300,7 @@ const Wallets = () => {
         isOpen={showTransferModal}
         onClose={() => setShowTransferModal(false)}
         title="Transfer Antar Wallet"
+        size="lg"
         footer={
           <>
             <Button variant="secondary" onClick={() => setShowTransferModal(false)}>

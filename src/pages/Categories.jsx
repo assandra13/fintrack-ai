@@ -294,6 +294,7 @@ const Categories = () => {
           setEditingCategory(null);
         }}
         title={editingCategory ? "Edit Kategori" : "Tambah Kategori"}
+        size="lg"
         footer={
           <>
             <Button variant="secondary" onClick={() => setShowModal(false)}>

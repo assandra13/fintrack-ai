@@ -36,9 +36,9 @@ const ModernModal = ({
 
   const sizeStyles = {
     sm: { maxWidth: "400px" },
-    md: { maxWidth: "600px" },
-    lg: { maxWidth: "800px" },
-    xl: { maxWidth: "1000px" },
+    md: { maxWidth: "700px", width: "95%" },
+    lg: { maxWidth: "900px", width: "95%" },
+    xl: { maxWidth: "1100px", width: "95%" },
   };
 
   return (

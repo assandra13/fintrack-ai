@@ -417,6 +417,7 @@ const Transactions = () => {
           setEditingTransaction(null);
         }}
         title={editingTransaction ? "Edit Transaksi" : "Tambah Transaksi"}
+        size="lg"
         footer={
           <>
             <Button
@@ -468,17 +469,15 @@ const Transactions = () => {
             )}
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "var(--space-4)" }}>
-            <ModernSelect
-              label="👛 Wallet"
-              value={formData.walletId}
-              onChange={(e) => setFormData({ ...formData, walletId: e.target.value })}
-              options={wallets.map((w) => ({ value: w.id, label: `${w.name} (${formatCurrency(w.balance)})` }))}
-              required
-            />
+          <ModernSelect
+            label="👛 Wallet"
+            value={formData.walletId}
+            onChange={(e) => setFormData({ ...formData, walletId: e.target.value })}
+            options={wallets.map((w) => ({ value: w.id, label: `${w.name} (${formatCurrency(w.balance)})` }))}
+            required
+          />
 
-            <ModernDatePicker label="📅 Tanggal" value={formData.date} onChange={(e) => setFormData({ ...formData, date: e.target.value })} required />
-          </div>
+          <ModernDatePicker label="📅 Tanggal" value={formData.date} onChange={(e) => setFormData({ ...formData, date: e.target.value })} required />
 
           <Input label="📝 Deskripsi (Opsional)" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} placeholder="Contoh: Belanja groceries di supermarket" />
 
