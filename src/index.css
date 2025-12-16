@@ -189,6 +189,8 @@ h6 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: var(--space-4);
+  display: block;
+  width: 100%;
 }
 
 h1 {
@@ -1406,11 +1408,6 @@ a:hover {
   flex-wrap: wrap !important;
 }
 
-/* Ensure flex containers don't have conflicting styles */
-div[style*="display: flex"] {
-  flex-wrap: wrap;
-}
-
 input[type="text"],
 input[type="date"],
 input[type="email"],
@@ -1421,3 +1418,75 @@ textarea {
   max-width: 100%;
   min-width: 0;
 }
+
+/* Modal responsive fixes */
+.modal-container-responsive {
+  padding: var(--space-4);
+}
+
+.modal-content-responsive {
+  width: 100% !important;
+  border-radius: var(--radius-2xl);
+}
+
+.modal-header-responsive {
+  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  flex-shrink: 0;
+}
+
+.modal-header-responsive h2 {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.modal-body-responsive {
+  border-radius: 0;
+  min-width: 0; /* Ensures flex children don't overflow */
+}
+
+.modal-body-responsive form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body-responsive form > div {
+  width: 100%;
+}
+
+.modal-body-responsive form > div[style*="grid"] {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.modal-body-responsive form > div[style*="grid"] > * {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+
+.modal-footer-responsive {
+  border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .modal-container-responsive {
+    padding: 0;
+  }
+
+  .modal-content-responsive {
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  }
+
+  .modal-body-responsive {
+    max-height: calc(100vh - 200px);
+  }
+}
+
+ 

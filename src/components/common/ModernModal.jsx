@@ -59,6 +59,7 @@ const ModernModal = ({
 
       {/* Modal Container */}
       <div
+        className="modal-container-responsive"
         style={{
           position: "fixed",
           inset: 0,
@@ -66,17 +67,17 @@ const ModernModal = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "var(--space-4)",
           pointerEvents: "none",
+          padding: "var(--space-4)",
         }}
       >
         <div
           onClick={(e) => e.stopPropagation()}
+          className="modal-content-responsive"
           style={{
             ...sizeStyles[size],
             width: "100%",
             background: "var(--bg-elevated)",
-            borderRadius: "var(--radius-2xl)",
             boxShadow: "0 20px 60px -10px rgba(0, 0, 0, 0.3)",
             maxHeight: "90vh",
             display: "flex",
@@ -85,23 +86,26 @@ const ModernModal = ({
             animation: "slideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)",
             border: "1px solid var(--border-color)",
             overflow: "hidden",
+            boxSizing: "border-box",
           }}
         >
           {/* Header */}
           <div
+            className="modal-header-responsive"
             style={{
-              padding: "var(--space-6)",
               borderBottom: "1px solid var(--border-color)",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
               background: "linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(8, 145, 178, 0.05) 100%)",
+              padding: "var(--space-6)",
+              boxSizing: "border-box",
             }}
           >
             <h2
+              className="modal-title-responsive"
               style={{
                 margin: 0,
-                fontSize: "1.375rem",
                 fontWeight: 700,
                 color: "var(--text-primary)",
                 fontFamily: "var(--font-display)",
@@ -142,11 +146,13 @@ const ModernModal = ({
 
           {/* Content */}
           <div
+            className="modal-body-responsive"
             style={{
               flex: 1,
-              padding: "var(--space-6)",
               overflowY: "auto",
               color: "var(--text-primary)",
+              padding: "var(--space-6)",
+              boxSizing: "border-box",
             }}
           >
             {children}
@@ -155,14 +161,16 @@ const ModernModal = ({
           {/* Footer */}
           {footer && (
             <div
+              className="modal-footer-responsive"
               style={{
-                padding: "var(--space-6)",
                 borderTop: "1px solid var(--border-color)",
                 display: "flex",
                 gap: "var(--space-3)",
                 justifyContent: "flex-end",
                 background: "linear-gradient(135deg, rgba(14, 165, 233, 0.02) 0%, rgba(8, 145, 178, 0.02) 100%)",
                 flexShrink: 0,
+                padding: "var(--space-6)",
+                boxSizing: "border-box",
               }}
             >
               {footer}

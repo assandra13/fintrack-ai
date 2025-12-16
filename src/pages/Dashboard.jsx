@@ -154,7 +154,7 @@ const Dashboard = () => {
               <Wallet size={20} style={{ color: "var(--primary-600)" }} />
             </div>
           </div>
-          <h2 style={{ margin: 0 }}>{formatCurrency(totalBalance)}</h2>
+          <h2 style={{ margin: 0, marginBottom: 0, display: "block", wordBreak: "break-word" }}>{formatCurrency(totalBalance)}</h2>
         </Card>
 
         <Card>
