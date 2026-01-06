@@ -572,6 +572,7 @@ a:hover {
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 1;
@@ -974,15 +975,19 @@ a:hover {
   .gap-0 {
     gap: 0 !important;
   }
+
   .gap-1 {
     gap: 2px !important;
   }
+
   .gap-2 {
     gap: 4px !important;
   }
+
   .gap-3 {
     gap: 6px !important;
   }
+
   .gap-4 {
     gap: 8px !important;
   }
@@ -990,15 +995,19 @@ a:hover {
   .p-0 {
     padding: 0 !important;
   }
+
   .p-1 {
     padding: 2px !important;
   }
+
   .p-2 {
     padding: 4px !important;
   }
+
   .p-3 {
     padding: 6px !important;
   }
+
   .p-4 {
     padding: 8px !important;
   }
@@ -1006,15 +1015,19 @@ a:hover {
   .m-0 {
     margin: 0 !important;
   }
+
   .m-1 {
     margin: 2px !important;
   }
+
   .m-2 {
     margin: 4px !important;
   }
+
   .m-3 {
     margin: 6px !important;
   }
+
   .m-4 {
     margin: 8px !important;
   }
@@ -1101,7 +1114,8 @@ a:hover {
   input[type="number"],
   input[type="date"],
   select {
-    font-size: 16px !important; /* CRITICAL: Prevents iOS zoom */
+    font-size: 16px !important;
+    /* CRITICAL: Prevents iOS zoom */
     line-height: 1.5 !important;
   }
 }
@@ -1360,7 +1374,7 @@ a:hover {
   }
 
   /* Flex containers should wrap on mobile */
-  main > div > div:first-child {
+  main>div>div:first-child {
     flex-direction: column;
   }
 }
@@ -1379,6 +1393,7 @@ a:hover {
     align-items: center !important;
   }
 }
+
 /* Fix Header overflow and layout */
 .app-header {
   overflow: visible !important;
@@ -1444,7 +1459,8 @@ textarea {
 
 .modal-body-responsive {
   border-radius: 0;
-  min-width: 0; /* Ensures flex children don't overflow */
+  min-width: 0;
+  /* Ensures flex children don't overflow */
 }
 
 .modal-body-responsive form {
@@ -1453,16 +1469,16 @@ textarea {
   flex-direction: column;
 }
 
-.modal-body-responsive form > div {
+.modal-body-responsive form>div {
   width: 100%;
 }
 
-.modal-body-responsive form > div[style*="grid"] {
+.modal-body-responsive form>div[style*="grid"] {
   width: 100% !important;
   max-width: 100% !important;
 }
 
-.modal-body-responsive form > div[style*="grid"] > * {
+.modal-body-responsive form>div[style*="grid"]>* {
   width: 100% !important;
   max-width: 100% !important;
 }
@@ -1488,5 +1504,3 @@ textarea {
     max-height: calc(100vh - 200px);
   }
 }
-
- 
